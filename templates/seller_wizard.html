@@ -4,14 +4,13 @@
   <div class="row">
     <div class="col-md-8 offset-md-2">
       {% comment %} {{ data.survey_id }} {% endcomment %}
-      <form method="post">
-        {% csrf_token %}
-        <!-- Progress bar to show current step -->
-        <div class="progress">
-          {% comment %} <div class="progress-bar" role="progressbar" aria-valuenow="{{ data.step }}" aria-valuemin="1" aria-valuemax="{{ data.step_count }}" style="width: {{ data.step / data.step_count * 100 }}%;"> {% endcomment %}
-            Step {{ data.step }} of {{ data.step_count }}
-          </div>
+      
+      <!-- Progress bar to show current step -->
+      <div class="progress">
+        {% comment %} <div class="progress-bar" role="progressbar" aria-valuenow="{{ data.step }}" aria-valuemin="1" aria-valuemax="{{ data.step_count }}" style="width: {{ data.step / data.step_count * 100 }}%;"> {% endcomment %}
+          Step {{ data.step }} of {{ data.step_count }}
         </div>
+      </div>
 
          <!-- Form elements -->
       <form id="seller-form" method="post" action="{% url 'seller_wizard_view' %}">
@@ -75,7 +74,6 @@
           <button type="submit" name="submit" value="submit" class="btn btn-success">Submit</button>
           {% endif %}
         </div>
-      </form>
       </form>
     </div>
   </div>
