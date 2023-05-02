@@ -2,6 +2,55 @@
 <html>
 <head>
     <title>{% block title %} {% endblock %}</title>
+    <style>
+        body {
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            overflow-x: auto;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+         }
+         th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+         }
+         th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+         }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        }
+
+        .container {
+        margin-top: 50px;
+        }
+
+        label {
+        font-weight: bold;
+        }
+
+        input[type="submit"], button {
+        margin-right: 10px;
+        }
+
+        .form-group span {
+            display: block;
+            margin-bottom: 10px
+        }
+    </style>
 </head>
 <body>
     <header>

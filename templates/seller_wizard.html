@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
+{% block head %}
+  
+{% endblock %}
 {% block content %}
 <div class="container">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
+  <div>
+    <h2>Watermelon Markets - Seller Survey</h2>
+    <div style="margin-top: 30px">
       {% comment %} {{ data.survey_id }} {% endcomment %}
-      
       <!-- Progress bar to show current step -->
-      <div class="progress">
+      <div>
         {% comment %} <div class="progress-bar" role="progressbar" aria-valuenow="{{ data.step }}" aria-valuemin="1" aria-valuemax="{{ data.step_count }}" style="width: {{ data.step / data.step_count * 100 }}%;"> {% endcomment %}
           Step {{ data.step }} of {{ data.step_count }}
         </div>
@@ -19,28 +22,32 @@
         <!-- Step 1 -->
         {% if data.step == 1 %}
         <div class="form-group">
-          <label for="store_name">Store Name</label>
+          <label for="store_name">What is the name of your store?</label>
+          <span>Example: Razer Gold, Amazon, Target. (If you have multiple stores, choose your top gift card -- you can always add more later.)</span>
           <input type="text" class="form-control" id="store_name" name="store_name" value="{{ form.store_name }}" />
         </div>
         {% endif %}
         <!-- Step 2 -->
         {% if data.step == 2 %}
         <div class="form-group">
-          <label for="gift_card_balance">Gift Card Balance</label>
+          <label for="gift_card_balance">What is the balance left on your gift card?</label>
+          <span>What is the balance left on your gift card? If possible, please double check your balance before entering the number here</span>
           <input type="number" max="1000" class="form-control" id="gift_card_balance" name="gift_card_balance" value="{{ form.gift_card_balance }}" />
         </div>
         {% endif %}
         <!-- Step 3 -->
         {% if data.step == 3 %}
         <div class="form-group">
-          <label for="selling_price">Selling Price</label>
+          <label for="selling_price">What price are you selling at?</label>
+          <span>Example Answer: $70. Please remember a low prices generally results in a faster and more successful sale, and we recommend a substantial discount</span>
           <input type="number" max="1000" class="form-control" id="selling_price" name="selling_price" value="{{ form.selling_price }}" />
         </div>
         {% endif %}
         <!-- Step 4 -->
       {% if data.step == 4 %}
       <div class="form-group">
-        <label for="funds_network">Funds Network</label>
+        <label for="funds_network">Which network would you like to receive funds at?</label>
+        <span>If you are unsure, please select Polygon. (You may change this later.)</span>
         <select style="width: 150px" class="form-control" name="funds_network" id="funds_network">
           <option value="Polygon" {% if form.funds_network == 'Polygon' %} selected{% endif %}>Polygon</option>
           <option value="Ethereum" {% if form.funds_network == 'Ethereum' %} selected{% endif %}>Ethereum</option>
@@ -50,14 +57,16 @@
         <!-- Step 5 -->
         {% if data.step == 5 %}
         <div class="form-group">
-          <label for="funds_address">Funds Address</label>
+          <label for="funds_address">What Polygon or Ethereum address would you like to receive funds at?</label>
+          <span>You may change this later. Example: 0xfA63Ca5caF1D88f42e1A73aE0E0cb7060B9E7292</span>
           <input type="text" class="form-control" id="funds_address" name="funds_address" value="{{ form.funds_address }}" />
         </div>
         {% endif %}
         <!-- Step 6 -->
       {% if data.step == 6 %}
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email">Almost done! What is your email address?</label>
+        <span>We will only use this to reach out about the transaction. Please check this often as we'll use this as the main way of getting in touch.</span>
         <input type="email" class="form-control" id="email" name="email" value="{{ form.email }}" />
       </div>
       {% endif %}
