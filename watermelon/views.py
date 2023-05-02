@@ -1,14 +1,10 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
 
 # Create your views here.
-from django.views.generic.edit import FormView
 from django.views.generic import TemplateView
-from .forms import SellerForm
 from .models import Seller
 from django.shortcuts import redirect
 import uuid
-from django.http import HttpResponse
 from django.urls import reverse
 
 def sellerForm(request):
