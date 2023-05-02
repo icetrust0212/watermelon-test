@@ -7,7 +7,6 @@ from django.views.generic import TemplateView
 from .forms import SellerForm
 from .models import Seller
 from django.shortcuts import redirect
-from formtools.wizard.storage.session import SessionStorage
 import uuid
 from django.http import HttpResponse
 from django.urls import reverse

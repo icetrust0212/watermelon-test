@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'watermelon.apps.WatermelonConfig'
+    'watermelon.apps.WatermelonConfig',
 ]
 
 MIDDLEWARE = [
