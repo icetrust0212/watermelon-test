@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+    <header>
+        <!-- Add any header content here -->
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Add any footer content here -->
+    </footer>
+    <script>
+        // Detect the refresh event on the current page
+        if (window.performance) {
+            if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+                // Redirect the user to a new URL upon refresh
+                window.location.replace(window.location.href);
+            }
+        }
+    </script>
+</body>
+</html>

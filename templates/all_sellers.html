@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Sellers</h1>
+  <table>
+    <thead>
+        <tr>
+            <th>Survey Id</th>
+            <th>Gift Card Balance</th>
+            <th>Selling Price</th>
+            <th>Funds Network</th>
+            <th>Funds Address</th>
+            <th>Email</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in data %}
+          <tr>
+            <td>{{item.survey_id}}</td>
+            <td>{{item.gift_card_balance}}</td>
+            <td>{{item.selling_price}}</td>
+            <td>{{item.funds_network}}</td>
+            <td>{{item.funds_address}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.created_at}}</td>
+          </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

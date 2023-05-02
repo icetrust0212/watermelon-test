@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      {% comment %} {{ data.survey_id }} {% endcomment %}
+      <form method="post">
+        {% csrf_token %}
+        <!-- Progress bar to show current step -->
+        <div class="progress">
+          {% comment %} <div class="progress-bar" role="progressbar" aria-valuenow="{{ data.step }}" aria-valuemin="1" aria-valuemax="{{ data.step_count }}" style="width: {{ data.step / data.step_count * 100 }}%;"> {% endcomment %}
+            Step {{ data.step }} of {{ data.step_count }}
+          </div>
+        </div>
+
+         <!-- Form elements -->
+      <form id="seller-form" method="post" action="{% url 'seller_wizard_view' %}">
+        {% csrf_token %}
+        <input type="hidden" class="form-control" id="survey_id" name="survey_id" value="{{data.survey_id}}"/>
+        <!-- Step 1 -->
+        {% if data.step == 1 %}
+        <div class="form-group">
+          <label for="store_name">Store Name</label>
+          <input type="text" class="form-control" id="store_name" name="store_name" value="{{ form.store_name }}" />
+        </div>
+        {% endif %}
+        <!-- Step 2 -->
+        {% if data.step == 2 %}
+        <div class="form-group">
+          <label for="gift_card_balance">Gift Card Balance</label>
+          <input type="number" max="1000" class="form-control" id="gift_card_balance" name="gift_card_balance" value="{{ form.gift_card_balance }}" />
+        </div>
+        {% endif %}
+        <!-- Step 3 -->
+        {% if data.step == 3 %}
+        <div class="form-group">
+          <label for="selling_price">Selling Price</label>
+          <input type="number" max="1000" class="form-control" id="selling_price" name="selling_price" value="{{ form.selling_price }}" />
+        </div>
+        {% endif %}
+        <!-- Step 4 -->
+      {% if data.step == 4 %}
+      <div class="form-group">
+        <label for="funds_network">Funds Network</label>
+        <select style="width: 150px" class="form-control" name="funds_network" id="funds_network">
+          <option value="Polygon" {% if form.funds_network == 'Polygon' %} selected{% endif %}>Polygon</option>
+          <option value="Ethereum" {% if form.funds_network == 'Ethereum' %} selected{% endif %}>Ethereum</option>
+      </select>
+      </div>
+      {% endif %}
+        <!-- Step 5 -->
+        {% if data.step == 5 %}
+        <div class="form-group">
+          <label for="funds_address">Funds Address</label>
+          <input type="text" class="form-control" id="funds_address" name="funds_address" value="{{ form.funds_address }}" />
+        </div>
+        {% endif %}
+        <!-- Step 6 -->
+      {% if data.step == 6 %}
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" value="{{ form.email }}" />
+      </div>
+      {% endif %}
+        <!-- Hidden input field to keep track of current step -->
+        <input type="hidden" name="step" value="{{ data.step }}">
+        <!-- Previous and Next buttons -->
+        <div class="form-group">
+          {% if data.step > 1 %}
+          <input type="submit" name="direction" value="PREV" class="btn btn-secondary" />
+          {% endif %}
+          {% if data.step < data.step_count %}
+          <input type="submit" name="direction" value="NEXT" class="btn btn-primary" />
+          {% else %}
+          <button type="submit" name="submit" value="submit" class="btn btn-success">Submit</button>
+          {% endif %}
+        </div>
+      </form>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
